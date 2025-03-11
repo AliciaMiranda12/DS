@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Desenvolva um sistema que irá receber um usuário e senha e verifique se o acesso está liberado para esse usuário .
+         OBS:a senha deverá ter no mínimo 6 caracteres.Usar a função lenght
+        nome.lenght vai ver os caracteres*/
+        var nome = prompt("Digite o seu usuário:");
+        var senha =  prompt("Digite o sua senha:");
+        
+        if(senha.length<6){
+            alert("Acesso negado");
+        }else{
+            alert("Autorizado " +nome);
+        }
+    </script>
+</body>
+</html>

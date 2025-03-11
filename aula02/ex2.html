@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 02</title>
+</head>
+<body>
+    <script>
+        //Faça um programa que repita enquanto a resposta for "S"
+        // Faça a soma os valores digitados. No final exiba a soma dos valores.
+        var numero = 0;
+        var resposta = "S";
+        var quantidade = 0;
+        var soma = 0;
+        var maiorValor = 0;
+
+        while (resposta=="S") {
+           numero=Number(prompt("Insira um número:"));
+           resposta = prompt("Deseja inserir outro número? S=SIM").toUpperCase();
+          quantidade++;
+           soma+=numero;
+           if(maiorValor<numero){
+            maiorValor = numero;
+           }
+        }
+        alert("A quantidade de valores digitados é:" +quantidade);
+        alert("A soma dos números é:" +soma);
+        alert("O maior valor digitado é:" +maiorValor);
+        
+
+
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 01</title>
+</head>
+<body>
+    <script>
+     var usuario; 
+     var senha; 
+     //var login = false;
+     usuario = prompt("Insira um nome de usuário:");
+     senha = prompt("Insira uma senha de usuário:");
+     if(senha.length >= 6){
+        alert("Cadastrado com sucesso");
+
+        var usuarioDigitado = prompt("Insira o nome do usuário:");
+        var senhaDigitada = prompt("Insira a senha do usuário:");
+       if(usuarioDigitado==usuario && senhaDigitada==senha) {
+        alert("Efetuado com sucesso");
+
+       }
+       else{
+        alert("Dados inválidos");
+
+       }
+       }
+       else{
+         alert("A senha inserida não possui 6 dígitos");
+       }/*while(login==false)*/
+       
+     
+
+    </script>
+</body>
+</html>

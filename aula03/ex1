@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 1</title>
+</head>
+<body>
+    <script>
+    
+    var n1, n2, resultado;
+    var operacao;
+    var resposta;
+    do{
+    n1 = Number(prompt("Insira um número:"));
+    n2 = Number(prompt("Insira um segundo número:"));
+    operacao = Number(prompt("1=Soma\n 2=Subtração\n 3=Multiplicação\n 4=Divisão"));
+
+    if(operacao==1){
+         resultado =n1+n2;
+    }
+    else if(operacao==2){
+        resultado= n1-n2;  
+    }
+    else if(operacao==3){
+        resultado= n1*n2;     
+    }
+    else if(operacao==4){
+        resultado= n1/n2;
+    }
+    else{
+        alert("Operação inválida");
+    }
+    alert(resultado);
+
+    resposta=Number(prompt("Deseja efetuar outro cálculo? (1=SIM)"));
+ }while(resposta==1);
+ alert("Finalizando o programa");
+
+
+    </script>
+    
+</body>
+</html>

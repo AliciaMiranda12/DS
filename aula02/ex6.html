@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 06</title>
+</head>
+<body>
+    <script>
+        //Peça para o usuário inserir um número para calcular a tabuada.
+        //Faça a tabuada do número 0 até o número em que o usuário escolher
+        var numero;
+        var tabuada;
+        numero = Number(prompt("Digite um número:"));
+        tabuada = Number(prompt("Especifique o valor:"));
+
+        for (var i = 0; i<=tabuada ;i++) {
+            var resultado = numero*i;
+           document.writeln(resultado);
+        }
+    </script>
+</body>
+</html>

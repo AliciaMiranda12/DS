@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Desenvolva uma aplicação no qual o usuário irá entrar com a idade e será exibido se pode votar,se a votação é obrigatório ou não
+        var idade = parseInt(prompt("Dgite sua idade:"));
+        if(idade<=16){
+            alert("Não pode votar.");
+        }
+         else if (idade >= 16 && idade <18) {
+            alert("Não é obrigatório votar.");
+        }
+        else if (idade >= 18 && idade <70) {
+            alert("É obrigatório votar");
+        }
+        else if (idade >= 70) {
+            alert("Não é obrigatório votar");
+        }
+
+    </script>
+</body>
+
+</html>
