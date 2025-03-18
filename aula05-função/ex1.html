@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+           //Soma dos elementos de um vetor
+
+   var valores = [];
+   var soma=0;
+
+   //atribuindo valores para o vetor de posições
+
+   for (var i=0;i<5;i++){
+      valores.push(Number(prompt(i+" - Insira um valor")));
+   }
+
+   //fazendo a soma das posições do vetor
+   for (var i=0;i<5;i++){
+       soma+=valores[i];
+   }
+   document.write("A soma dos valores é de:"+soma);
+    </script>
+</body>
+</html>

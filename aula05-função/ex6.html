@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 6:</title>
+</head>
+<body>
+    <form action="">
+        <h1>Dobro de um número</h1>
+        <label for="numero">Número</label>
+        <input type="number" id="numero">
+        <input type="button" value="Calcular" onclick="calcular()">
+    </form>
+    <script>
+        function calcular (){
+            var numero;
+            //recebendo o valor input do html e atribuindo na variável 
+            numero = Number(document.getElementById("numero").value);
+            var dobro = numero*2;
+            alert("O dobro do valor é:" +dobro)
+        }
+    </script>
+</body>
+</html>
