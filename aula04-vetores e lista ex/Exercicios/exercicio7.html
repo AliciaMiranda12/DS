@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 7</title>
+</head>
+<body>
+    <script>
+        let vetor = [];
+    
+      
+        for (let i = 0; i < 5; i++) {
+            let num = parseInt(prompt(`Digite o número ${i + 1}:`)); 
+            vetor.push(num); 
+        }
+
+        let multiplicador = parseInt(prompt("Digite o multiplicador:"));
+
+        let resultado = vetor.map(num => num * multiplicador);
+
+        alert(`Vetor resultante: ${resultado.join(", ")}`);
+    </script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 5</title>
+</head>
+<body>
+<script>
+    
+let maiorId = null;
+let menorId = null ;
+
+for(let i = 0; i <5 ; i++){
+  let idade = parseFloat(prompt("Digite uma idade:"));
+    if(idade < 10){
+        break;
+    }
+    if( maiorId === null || idade > maiorId){
+        maiorId = idade;
+    }
+    if( menorId === null || idade > menorId){
+        menorId = idade;
+    }
+}
+document.write (`A maior Idade digitada foi ${maiorId} e a menor idade foi ${menorId}`);
+
+</script>
+    
+</body>
+</html>
