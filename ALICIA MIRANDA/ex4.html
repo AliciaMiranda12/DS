@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX 04</title>
+</head>
+<body>
+    <script>
+        const vetor = [];
+        for (let i = 0; i < 6; i++) {
+            const fruta = prompt("Digite uma fruta:");
+            vetor.push(fruta);
+        }
+        const posicao = Number(prompt("Digite uma posição (0 a 5):"));
+        
+        const frutaPosicao = vetor[posicao];
+        if(posicao<6 && posicao>=0){
+            alert(frutaPosicao);
+
+        }
+        else{
+            alert("Valor inválido");
+        }
+    
+    </script>
+    
+</body>
+</html>
