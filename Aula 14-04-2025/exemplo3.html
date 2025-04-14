@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 3</title>
+</head>
+<body>
+    <script src="js/exemplo.js"></script>
+    <script>
+        // Crie um algoritmo que leia 3 notas de um aluno, calcule a média e depois exiba a situação do aluno
+        // (Média<4 = reprovado, Média>=4 e <=6 Recuperação, Média>6 Aprovado)
+        // Crie uma função para calcular a média e a outra exibir a situação
+        var nota1 = Number(prompt("Insira uma nota:"));
+        var nota2 = Number(prompt("Insira uma nota:"));
+        var nota3 = Number(prompt("Insira uma nota:"));
+        var situacao = situacao(nota1,nota2,nota3);
+        var media=media(nota1,nota2,nota3);
+        alert(media)
+        alert(situacao)
+
+        
+    </script>
+</body>
+</html>

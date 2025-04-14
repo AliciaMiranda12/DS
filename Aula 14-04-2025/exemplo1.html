@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 1</title>
+</head>
+<body>
+    <script src="js/exemplo.js"></script>
+    <script>
+        var numero1 = Number(prompt("Insira um valor:"));
+        var numero2 = Number(prompt("Insira outro valor:"));
+        var resultado = desconto(numero1,numero2);
+        alert("Valor do desconto:R$"+resultado);
+
+        var resultadoFinal  = subtrair(numero1,resultado);
+        alert("Valor final já descontado:"+resultadoFinal); 
+        
+
+
+    </script>
+</body>
+</html>
