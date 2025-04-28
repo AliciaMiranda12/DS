@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requisição</title>
+</head>
+<body> 
+    <input type="text" id="input-search">
+    <button onclick="getCountry()" >Consultar País</button>
+
+    <script>
+       
+        function getCountry(){ 
+        let input_search = document.querySelector('#input-search');
+        let country = input_search.value;
+        let url =`https://restcountries.com/v3.1/name/${country}`; //template 
+            //requisição síncrona-ja espera um resultado/resposta
+            fetch(url) //buscar algo
+            .then(resp =>resp.json()) //arrow function,faça   -é uma função anonima
+            .then(dados => {
+                console.log(dados); //se tirar a chave tem return + um then
+            })
+            .catch(erro => {
+                console.log(erro);
+            }) //capturar algo(erro)
+            .finally(()=>{  //function sem parametro
+                console.log('Requisição finalizada!');
+            }) //finalizado,terminou    
+        
+           
+        }
+
+
+
+
+        
+
+    </script>
+    
+</body>
+</html>
