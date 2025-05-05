@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo01</title>
+</head>
+<body>
+    <script>
+        //Array de objetos
+        // let vetor = ["uva","maça","banana"];
+        
+        var vetorObj = [
+           {nome: "Gabriela", media: 8.5},//posição 0
+           {nome: "Alberto", media:9}, //posição 1
+           {nome:"João", media:5} //posição 2
+        ];
+        console.log(vetorObj); //teste
+
+        var nomeInserido = prompt("Insira seu nome:");
+        var mediaInserida = Number(prompt("Insira a média"));
+
+        vetorObj.push({nome:nomeInserido,media:mediaInserida});
+       // console.log(vetorObj);
+        //console.log(vetorObj[0]);
+        //console.log(vetorObj[0].nome);//exibindo campo que quer mostrar
+       // console.log(vetorObj[0].media);
+       document.writeln("<h2>Lista de Alunos</h2>");
+        vetorObj.forEach(aluno => { //percorre o array, arrow function
+            document.write(`Nome: ${aluno.nome} - Média:${aluno.media} <br>`);
+        });
+
+
+
+    </script>
+    
+</body>
+</html>
