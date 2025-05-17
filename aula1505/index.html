@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade</title>
+</head>
+<body>
+    <!-- Faça um vetor objeto para armazenar os dados de um usuario, o qual deverá conter nome,email e senha. Faça um input
+    text para inserir os dados dentro do vetor -->
+    <div id="cadastro">
+        <h1>Cadastro</h1>
+        <label for="nome">Insira o nome:</label>
+        <input type="text" id="nome">
+        <br>
+        <label for="email">Insira o email:</label>
+        <input type="text" id="email">
+        <br>
+        <label for="senha">Insira a senha:</label>
+        <input type="password"  id="senha">
+        <br>
+        <input type="button" value="Cadastrar" onclick="cadastrar()">
+        <input type="reset" value="Limpar" onclick="limpar()">
+    </div>
+    <div id="usuario"></div>
+    <script src="javascript.js"></script>
+</body>
+</html>
