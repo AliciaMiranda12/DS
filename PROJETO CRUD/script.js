@@ -21,7 +21,7 @@ function atualizar(){
     let conteudo = ""; //lvazio
 
     compras.forEach((valor, index) => { //exibir
-        conteudo += `${valor.produto} <button onclick="excluir(${index})">Excluir</button> 
+        conteudo += `${valor.produto} <button onclick="excluir(${index})" id="excluir">Excluir</button> 
         <button onclick="editar(${index})">Editar</button> <br> <hr>`;
     });
 
