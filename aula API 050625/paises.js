@@ -30,3 +30,41 @@ function getCountry(){
         output.innerHTML=`<h1>${erro.message}</h1>`;
     })
 };
+
+function filtroRegiao(){
+    let select = document.querySelector("#region-select");
+    let region = select.value;
+    let output = document.querySelector("#country-info");
+
+    //Limpando a busca anterior (caso tenha sido feita)
+    output.innerHTML = "";
+
+    output.innerHTML = "<h2>Carregando...</h2>";
+
+    //se nenhuma região for selecionada, não retorna nada
+    if(!region)return;
+
+    let url = `https://restcountries.com/v3.1/region/${region}`;
+
+    //fazendo requisição
+
+    fetch(url)
+    .then(resp=>{
+        if(!resp.ok) throw new Error("País não encontrado!");
+        return resp.json();
+    })
+    .then(dados=>{
+        let exibir = dados.map(pais=>{
+            return `<div>
+            <h2>${pais.name.common}</h2>
+            <img src="${pais.flags.png}" alt="<h2>${pais.flags.alt}">
+            </img>
+            <p>Região:${pais.region}</p>
+            </div>`
+        }).join("");
+        output.innerHTML = exibir;
+    })
+    .catch(erro =>{
+        output.innerHTML=`<h1>${erro.message}</h1>`;
+    })
+}
