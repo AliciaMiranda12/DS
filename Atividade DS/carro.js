@@ -8,7 +8,5 @@ class Carro {
     abrirPortas(){
         return `A porta foi aberta`;
 
-    };
-
-
+    }
 };
