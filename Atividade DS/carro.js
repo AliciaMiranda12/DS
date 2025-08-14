@@ -1,4 +1,4 @@
-class Carro {
+class Carro extends Veiculo {
     set portas(valor){
         this._portas = valor;
     }
@@ -6,7 +6,12 @@ class Carro {
         return this._portas;
     }
     abrirPortas(){
-        return `A porta foi aberta`;
-
+        return `A porta foi aberta <br>`;
+    }
+    informacoesCarro(){
+         return `      
+         Portas: ${this._portas} <br>
+           `
+    
     }
 };

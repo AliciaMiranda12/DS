@@ -18,16 +18,16 @@ class Veiculo{
    get ano(){
       return this._ano;
    }
-   informacoes(){
-      return `
-      Marca: ${this._marca} <br> 
-      Modelo: ${this._modelo} <br>
-      Ano: ${this._ano}`;
-  
-   }
    ligar(){
-      return `O veículo foi ligado`;
+      return `O veículo foi ligado <br>`;
    }
+      informacoes(){
+          return `
+          Marca: ${this._marca} <br>
+          Modelo: ${this._modelo} <br>
+          Ano: ${this._ano} <br>        
+         `
+  }
 };
 
 
