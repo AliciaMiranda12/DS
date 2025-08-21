@@ -1,0 +1,32 @@
+body{
+    background-color: rgb(210, 209, 209);
+}
+#pkm_name{
+    padding: 5px;
+    margin: 5px;
+    font-size: 15px;
+   
+}
+#pkm_name2{
+    padding: 5px;
+    margin: 5px;
+    font-size: 15px;
+   
+}
+button{
+    background-color: rgb(243, 160, 16);
+    padding: 5px;
+    margin: 5px;
+    border-radius:4px;
+    font-size: 15px;
+    border-color:  rgb(175, 93, 12);
+}
+h1{
+    background-color:rgb(238, 175, 67);
+    text-align: center;
+}
+#container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

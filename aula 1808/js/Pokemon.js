@@ -1,5 +1,4 @@
 class Pokemon {
-
     set nome(valor){
         this._nome=valor;
     }
