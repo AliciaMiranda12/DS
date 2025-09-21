@@ -1,161 +1,72 @@
-let pokemon1 = null;
-let pokemon2 = null;
-let hp1;
-let hp2;
+let treinadores = JSON.parse(localStorage.getItem("treinadores")) || [];
 
-function buscarPokemon() {
-  let pkm_name = document.querySelector("#pkm_name").value;
+document.querySelector("#formTreinador").addEventListener("submit", function(event) {
+  event.preventDefault();
 
-  fetch(`https://pokeapi.co/api/v2/pokemon/${pkm_name}`)
-    .then(resposta => {
-      if (!resposta.ok) {
-        throw new Error("Pokemon não encontrado");
-      }
-      return resposta.json();
-    })
-    .then(dados => {
-      const p = new Pokemon();
-      p.nome = dados.name;
-      p.tipo = dados.types.map(t => t.type.name);
-      p.peso = dados.weight;
-      p.sprite = dados.sprites.front_default;
-      p.hp = dados.stats[0].base_stat;
-      p.ataque = dados.stats[1].base_stat;
-      p.defesa = dados.stats[2].base_stat;
-      // console.log(p.exibirDados());    
-      document.getElementById("resultado").innerHTML =
-        `<h1>${p.nome}</h1> 
-<ul>
-   <li>Tipo: ${p.tipo}</li>
-   <li>Peso: ${p.peso}</li>
-   <li>HP: ${p.hp}</li>
-   <li>Ataque: ${p.ataque}</li>
-   <li>Defesa: ${p.defesa}</li>
-</ul>
-   <img src="${p.sprite}">
-   `;
-      document.getElementById("hp1").max = p.hp;
-      document.getElementById("hp1").value = p.hp;
+  const nome = document.querySelector("#nome").value;
+  const idade = document.querySelector("#idade").value;
+  const cidade = document.querySelector("#cidade").value;
+  const pokemons = document.querySelector("#pokemons").value.split(",").map(p => p.trim());
 
-      pokemon1 = p;
-      hp1 = p.hp;
-    })
-    .catch(erro => {
-      alert(erro.message);
-    });
+  const novoTreinador = new Treinador(nome, idade, cidade, pokemons);
+  treinadores.push(novoTreinador);
+  salvarTreinadores();
+  atualizarLista();
+  this.reset();
+});
 
-
+function salvarTreinadores() {
+  localStorage.setItem("treinadores", JSON.stringify(treinadores));
 }
 
+function atualizarLista() {
+  const lista = document.querySelector("#listaTreinadores");
+  lista.innerHTML = "";
 
-function buscarPokemon2() {
-  let pkm_name2 = document.querySelector("#pkm_name2").value;
-
-  fetch(`https://pokeapi.co/api/v2/pokemon/${pkm_name2}`)
-    .then(resposta => {
-      if (!resposta.ok) {
-        throw new Error("Pokemon não encontrado");
-      }
-      return resposta.json();
-    })
-    .then(dados => {
-      const p2 = new Pokemon();
-      p2.nome = dados.name;
-      p2.tipo = dados.types.map(t => t.type.name);
-      p2.peso = dados.weight;
-      p2.sprite = dados.sprites.front_default;
-      p2.hp = dados.stats[0].base_stat;
-      p2.ataque = dados.stats[1].base_stat;
-      p2.defesa = dados.stats[2].base_stat;
-      // console.log(p.exibirDados());    
-      document.getElementById("resultado2").innerHTML =
-        `<h1>${p2.nome}</h1> 
-<ul>
-   <li>Tipo: ${p2.tipo}</li>
-   <li>Peso: ${p2.peso}</li>
-   <li>HP: ${p2.hp}</li>
-   <li>Ataque: ${p2.ataque}</li>
-   <li>Defesa: ${p2.defesa}</li>
-</ul>
-   <img src="${p2.sprite}">
-   `;
-      document.getElementById("hp2").max = p2.hp;
-      document.getElementById("hp2").value = p2.hp;
-
-      pokemon2 = p2;
-      hp2 = p2.hp;
-    })
-    .catch(erro => {
-      alert(erro.message);
-    });
+  treinadores.forEach((treinador, index) => {
+    const item = document.createElement("li");
+    item.innerHTML = `
+      <strong>${treinador.nome}</strong> (${treinador.idade} anos) - ${treinador.cidade}<br>
+      <em>Pokémons:</em> ${treinador.pokemons.join(", ")}<br>
+      <button onclick="editarTreinador(${index})">Editar</button>
+      <button onclick="excluirTreinador(${index})">Excluir</button>
+         <button onclick="pagina()">Continuar</button>
+      <hr>
+      <hr>
+    `;
+    lista.appendChild(item);
+  });
 }
 
-function batalhar() {
-  // validação pra ver se tem 2 pokemons
-  if (!pokemon1 || !pokemon2) {
-    alert("Selecione 2 pokemons!")
-    return;
+function excluirTreinador(index) {
+  treinadores.splice(index, 1);
+  salvarTreinadores();
+  atualizarLista();
+}
+
+function editarTreinador(index) {
+  const treinador = treinadores[index];
+
+  const novoNome = prompt("Novo nome:", treinador.nome);
+  const novaIdade = prompt("Nova idade:", treinador.idade);
+  const novaCidade = prompt("Nova cidade:", treinador.cidade);
+  const novosPokemons = prompt("Novos Pokémons (separados por vírgula):", treinador.pokemons.join(", "));
+
+  if (novoNome && novaIdade && novaCidade) {
+    treinador.atualizarDados(
+      novoNome,
+      novaIdade,
+      novaCidade,
+      novosPokemons.split(",").map(p => p.trim())
+    );
+    salvarTreinadores();
+    atualizarLista();
+  } else {
+    alert("Todos os campos devem ser preenchidos.");
   }
-  // definindo o hp inicial de cada pokemon
-  let hp1 = pokemon1.hp;
-  let hp2 = pokemon2.hp;
-
-  // esquema de inicio de ataque
-  // número ímpar = player 1
-  // número par = player2
-  let turno = 1;
-
-  // acumulando mensagens dos turnos
-  let log = "";
-
-  // zerando as mensagens no inicio da batalha
-  document.getElementById("resultadoBatalha").innerHTML = "";
-
-  let resultadoBatalha = document.getElementById("resultadoBatalha");
-
-  document.getElementById("resultadoLog").innerHTML = "";
-
-  // estrutura de repetição com temporizador
-  let intervalo = setInterval(() => {
-    // verificar se tem pontos de vida
-    if (hp1 > 0 && hp2 > 0) {
-      // verificando o turno de quem é
-      // ímpar é player 1
-      if (turno % 2 == 0) {
-        // dano gerado por número aleatório
-        // junto com o ataque e defesa
-        let dano = Math.max(1, pokemon1.ataque - pokemon1.defesa);
-
-        // tirando a pontuação de dano do player2
-        hp2 -= dano;
-        document.getElementById("hp2").value -= dano;
-
-        log += `<p>${pokemon1.nome} atacou o ${pokemon2.nome} e causou ${dano} de dano`;
-      }
-      // ataque do oponente
-      else {
-        let dano = Math.max(1, pokemon2.ataque - pokemon2.defesa);
-        // tirando a pontuação de dano do player2
-        hp1 -= dano;
-        document.getElementById("hp1").value -= dano;
-
-        log += `<p>${pokemon2.nome} atacou o ${pokemon1.nome} e causou ${dano} de dano`;
-      }
-      document.getElementById("resultadoLog").innerHTML = log;
-      turno++;
-    }
-    
-    // fechando o if dos pontos zerados
-    else { 
-      clearInterval(intervalo);
-
-      if (hp1 <= 0 && hp2 <= 0) {
-        resultadoBatalha.innerHTML = `<p>Empate! Ambos os pokémons caíram ao mesmo tempo!</p>`;
-      } else if (hp1 <= 0) {
-        resultadoBatalha.innerHTML = `<p>${pokemon2.nome} venceu a batalha!</p>`;
-      } else {
-        resultadoBatalha.innerHTML = `<p>${pokemon1.nome} venceu a batalha!</p>`;
-      }
-    }
-  }, 1000);
 }
+function pagina(){
+    window.location.href = "index.html";
+}
+// Inicializa a lista ao carregar a página
+atualizarLista();
